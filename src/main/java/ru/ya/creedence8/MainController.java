@@ -4,18 +4,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.math.BigInteger;
-import java.util.concurrent.ExecutionException;
-
 /**
- * Created by Cole S' Offe on 12.10.2017.
+ * Created by Cole S' Offe on 14.10.2017.
  */
 @Controller
 public class MainController {
     Web3Entity web3Entity;
 
     @RequestMapping("/")
-    public String renderingGeneric(Model model) throws ExecutionException, InterruptedException {
+    public String render(Model model) {
         try {
             web3Entity = new Web3Entity();
             model.addAttribute("error", "");
@@ -32,15 +29,5 @@ public class MainController {
             model.addAttribute("balanceInETH", "");
         }
         return "generic";
-
     }
-
-    @RequestMapping("/example")
-    public String renderingIndex() {
-
-        return "index";
-
-    }
-
-
 }
